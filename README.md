@@ -1,13 +1,13 @@
 # Site by Dubai Owls
 ## Roster & Roles:
 * Jeffrey (Project Manager): 
-  * 
+  * something
 * Arib Chowdhury: 
-  * 
+  * something
 * Anya Zorin: 
-  * 
+  * something
 * Carlos Hernandez: 
-  * 
+  * something
 ## Description:
 Our website ...
 
