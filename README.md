@@ -6,7 +6,7 @@
   * something
 * Anya Zorin: 
   * something
-* Carlos Hernandez: 
+* Carlos "Karl" Hernandez: 
   * something
 ## Description:
 Our website ...
