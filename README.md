@@ -1,4 +1,4 @@
-# Site by Dubai Owls
+# CAH by Dubai Owls
 ## Roster & Roles:
 * Jeffrey (Project Manager): 
   * something
@@ -12,8 +12,8 @@
 Our website ...
 
 ## Launch Codes:
-1. Clone this repository
-2. Move into the app directory:  
-3. Install the module(s) listed in the requirements.txt file.  
-In a terminal session, `pip install -r requirements.txt`
-4. Run the program: `python3 __init__.py`
+0. Make sure to have flutter installed and running the latest version (run `$flutter doctor` to update and check if its Version 2.2.0)
+1. Clone the repository
+2. `cd cah`
+3. `flutter run --release`
+4. Peruse app 
