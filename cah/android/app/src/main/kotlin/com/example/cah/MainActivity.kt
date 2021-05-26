@@ -1,4 +1,4 @@
-package com.example.cahh
+package com.example.cah
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cahh">
+    package="com.example.cah">
    <application
-        android:label="cahh"
+        android:label="cah"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
