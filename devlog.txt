@@ -5,10 +5,14 @@ P5 --
 
 
 jeffreyH -- 2021-05-23 21:28
-Created design document.
+Created design document
 ================================================================================
 Dubai Owls -- 2021-05-26 16:01
 Finalized design document
 Added team flag
 Added sample code for constructing flutter app
+================================================================================
+Dubai Owls -- 2021-05-27 17:23
+Resolved issues with design doc
+Closed issues from DD reviews by other PMs
 ================================================================================
