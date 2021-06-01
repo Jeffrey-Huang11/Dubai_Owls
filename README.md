@@ -1,15 +1,15 @@
 # CAH by Dubai Owls
 ## Roster & Roles:
 * Jeffrey (Project Manager): 
-  * something
+  * Page Construction
 * Arib Chowdhury: 
-  * something
+  * Database Management
 * Anya Zorin: 
-  * something
+  * App Developement
 * Carlos "Karl" Hernandez: 
-  * something
+  * Debugging
 ## Description:
-Our website ...
+Our website allows users to play Cards Against Humanities with other users. Users can create their own games with different card packs and can allow others to join with a password. 
 
 ## Launch Codes:
 0. Make sure to have flutter installed and running the latest version (run `$flutter doctor` to update and check if its Version 2.2.0)
