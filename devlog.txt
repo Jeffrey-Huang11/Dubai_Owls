@@ -21,3 +21,7 @@ Added sample running flutter app that consists of one page
 Changed dependencies and figured out issues with null safety
 Working on transitioning the prebuilt DB to our project and accessing it
 ================================================================================
+Dubai Owls -- 2021-06-01 19:58
+Created simple sign-up and welcome page
+Successfully constructed the cards db
+================================================================================
