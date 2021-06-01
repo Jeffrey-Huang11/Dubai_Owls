@@ -20,3 +20,4 @@ Dubai Owls -- 2021-05-31 20:40
 Added sample running flutter app that consists of one page 
 Changed dependencies and figured out issues with null safety
 Working on transitioning the prebuilt DB to our project and accessing it
+================================================================================
