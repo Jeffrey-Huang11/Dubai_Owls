@@ -1,7 +1,8 @@
 import 'dart:io';
-
+import 'dart:math';
 import 'package:flutter/services.dart';
 import 'package:lesson_13/models/black_cards.dart';
+import 'package:lesson_13/models/white_cards.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -9,16 +10,16 @@ class DatabaseCAHC {
   DatabaseCAHC._();
 
   static const databaseName = 'data.db';
-
+  Random random = new Random();
   //Constructor
   DatabaseCAHC._privateConstructor();
 
   static final DatabaseCAHC instance = DatabaseCAHC._privateConstructor();
-  static Database _database = <Database>[][0];
+  static Database? _database;
 
   Future<Database> get database async {
     _database = await initializeDatabase();
-    return _database;
+    return _database!;
   }
 
   initializeDatabase() async {
@@ -49,10 +50,29 @@ class DatabaseCAHC {
   }
 
 //select
-  Future<Map<String, dynamic>> getBlackCard() async {
+  Future<BlackCards> getBlackCard() async {
     final db = await database;
-    final List<Map<String, dynamic>> card = await db.rawQuery(
-        "SELECT * FROM 'public.black_cards' ORDER BY RANDOM() LIMIT 1;");
-    return card[0];
+    final List<Map<String, dynamic>> maps =
+        await db.query(BlackCards.tableName, orderBy: "RANDOM()", limit: 1);
+    return BlackCards(
+      id: int.parse(maps[0]['id']),
+      draw: int.parse(maps[0]['draw']),
+      pick: int.parse(maps[0]['pick']),
+      text: maps[0]['text'],
+      watermark: maps[0]['watermark'],
+    );
+  }
+
+  Future<List<WhiteCards>> getWhiteCards(int n) async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps =
+        await db.query(WhiteCards.tableName);
+    return List.generate(n, (i) {
+      int j = random.nextInt(maps.length);
+      return WhiteCards(
+          id: int.parse(maps[j]['id']),
+          text: maps[j]['text'],
+          watermark: maps[j]['watermark']);
+    });
   }
 }

@@ -13,7 +13,7 @@ class BlackCards {
       this.text = "word",
       this.watermark = "word"});
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     return {
       'id': id,
       'draw': draw,
@@ -23,13 +23,8 @@ class BlackCards {
     };
   }
 
-  factory BlackCards.fromJson(Map<String, dynamic> json) {
-    return BlackCards(
-      id: json['id'],
-      text: json['text'],
-      draw: json['draw'],
-      pick: json['pick'],
-      watermark: json['watermark'],
-    );
+  @override
+  String toString() {
+    return 'BlackCards{id: $id, draw: $draw, pick: $pick, text: $text, watermark: $watermark}';
   }
 }

@@ -5,6 +5,7 @@ void main() async {
   runApp(MyApp());
   DatabaseCAHC bruh = DatabaseCAHC.instance;
   print(await bruh.getBlackCard());
+  print(await bruh.getWhiteCards(5));
 }
 
 class MyApp extends StatelessWidget {
