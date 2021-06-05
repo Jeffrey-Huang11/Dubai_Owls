@@ -1,9 +1,10 @@
-import 'package:lesson_13/db/DbCAHC.dart';
+import 'package:cah/db/DbCAHC.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   runApp(MyApp());
   DatabaseCAHC bruh = DatabaseCAHC.instance;
+  bruh.getAllCardPacks();
   print(await bruh.getBlackCard());
   print(await bruh.getWhiteCards(5));
 }

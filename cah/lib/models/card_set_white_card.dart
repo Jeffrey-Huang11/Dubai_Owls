@@ -1,24 +1,16 @@
-class Words {
-  int id;
-  String word;
-  int favourite;
+class CardSetWhiteCards {
+  int card_set_id;
+  int white_card_id;
 
-  static String tableName = "data";
-  Words({this.id = 0, this.word = "word", this.favourite = 0});
+  static String tableName = "'public.card_set_white_card'";
+  CardSetWhiteCards({this.card_set_id = 0, this.white_card_id = 0});
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'word': word,
-      'favourite': favourite,
-    };
+  Map<String, dynamic> toMap() {
+    return {'card_set_id': card_set_id, 'white_card_id': white_card_id};
   }
 
-  factory Words.fromJson(Map<String, dynamic> json) {
-    return Words(
-      id: json['id'],
-      word: json['word'],
-      favourite: json['favourite'],
-    );
+  @override
+  String toString() {
+    return 'CardSetWhiteCards{card_set_id: $card_set_id, white_card_id: $white_card_id}';
   }
 }
