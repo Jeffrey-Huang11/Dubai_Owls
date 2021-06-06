@@ -1,0 +1,33 @@
+class CardSets {
+  int id;
+  int active;
+  int base_deck;
+  String description;
+  String name;
+  int weight;
+
+  static String tableName = "'public.card_set'";
+  CardSets(
+      {this.id = 0,
+      this.active = 0,
+      this.base_deck = 0,
+      this.description = "word",
+      this.name = "word",
+      this.weight = 0});
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'active': active,
+      'base_deck': base_deck,
+      'description': description,
+      'name': name,
+      'weight': weight
+    };
+  }
+
+  @override
+  String toString() {
+    return 'CardSets{id: $id, active: $active, base_deck: $base_deck, description: $description, name: $name, weight: $weight}';
+  }
+}
