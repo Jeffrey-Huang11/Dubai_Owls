@@ -1,13 +1,16 @@
 # CAH by Dubai Owls
 ## Roster & Roles:
 * Jeffrey (Project Manager): 
-  * Page Construction
+  * User Database Management
 * Arib Chowdhury: 
-  * Database Management
+  * Card Database Management
+  * Database Function Constructor
 * Anya Zorin: 
-  * App Developement
+  * Frontend Developer
+  * Web and App Tester
 * Carlos "Karl" Hernandez: 
-  * Debugging
+  * Pages Constructer
+  * Degugger
 ## Description:
 Our website allows users to play Cards Against Humanities with other users. Users can create their own games with different card packs and can allow others to join with a password. 
 
