@@ -25,3 +25,9 @@ Dubai Owls -- 2021-06-01 19:58
 Created simple sign-up and welcome page
 Successfully constructed the cards db
 ================================================================================
+aribC -- 2021-06-05 17:29
+Finished creating and testing functions for cards db
+================================================================================
+jeffreyH -- 2021-06-06 19:42
+Updated ReadMe tasks
+================================================================================
