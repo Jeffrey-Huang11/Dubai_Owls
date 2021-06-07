@@ -6,6 +6,7 @@ import 'package:cah/models/white_cards.dart';
 import 'package:cah/models/card_set.dart';
 import 'package:cah/models/card_set_black_card.dart';
 import 'package:cah/models/card_set_white_card.dart';
+import 'package:cah/models/user.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -68,6 +69,29 @@ class DatabaseCAHC {
     // Add code later
   }
 
+  // method to insert user
+  Future<void> insertUser(User user) async {
+    final db = await database;
+    await db.insert(
+      'user',
+      user.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  // method to retrieve all users
+  Future<List<User>> getUsers() async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps = await db.query('user');
+    return List.generate(maps.length, (i) {
+      return User(
+        id: maps[i]['id'],
+        username: maps[i]['username'],
+        password: maps[i]['password'],
+      );
+    });
+  }
+
   Future<bool> validBlackCardId(String black_card_id) async {
     final db = await database;
     List<Map<String, dynamic>> maps = await db.query(
@@ -92,7 +116,7 @@ class DatabaseCAHC {
     return false;
   }
 
-//select
+  //select
   Future<BlackCards> getBlackCard() async {
     final db = await database;
     List<Map<String, dynamic>> maps =
