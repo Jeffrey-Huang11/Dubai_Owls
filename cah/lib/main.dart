@@ -1,5 +1,6 @@
 import 'package:cah/db/DbCAHC.dart';
 import 'package:flutter/material.dart';
+import 'package:cah/models/user.dart';
 
 void main() async {
   runApp(MyApp());
@@ -7,10 +8,14 @@ void main() async {
   bruh.getAllCardPacks();
   print(await bruh.getBlackCard());
   print(await bruh.getWhiteCards(5));
+  var fido = User(username: 'Fido', password: 'drug');
+  await bruh.insertUser(fido);
+  print(await bruh.getUsers());
 }
 
 class MyApp extends StatelessWidget {
   @override
+  DatabaseCAHC bruh = DatabaseCAHC.instance;
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Welcome to Flutter',
@@ -19,7 +24,7 @@ class MyApp extends StatelessWidget {
           title: Text('Welcome to Flutter'),
         ),
         body: Center(
-          child: Text('Hello World'),
+          child: Text(bruh.getUsers().toString()),
         ),
       ),
     );

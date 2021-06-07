@@ -6,6 +6,7 @@ import 'package:cah/models/white_cards.dart';
 import 'package:cah/models/card_set.dart';
 import 'package:cah/models/card_set_black_card.dart';
 import 'package:cah/models/card_set_white_card.dart';
+import 'package:cah/models/user.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -47,10 +48,10 @@ class DatabaseCAHC {
       //write
       await File(path).writeAsBytes(bytes, flush: true);
 
-      return await openDatabase(path, readOnly: true);
+      return await openDatabase(path);
     } else {
       //print("opening existing db");
-      return await openDatabase(path, readOnly: true);
+      return await openDatabase(path);
     }
   }
 
@@ -66,6 +67,31 @@ class DatabaseCAHC {
   void updateCardPacks() {
     cardPacks = [];
     // Add code later
+  }
+
+  // method to insert user
+  Future<void> insertUser(User user) async {
+    final db = await database;
+    Map<String, dynamic> map = user.toMap();
+    String table = User.tableName;
+    String username = map['username'];
+    String password = map['password'];
+    await db.rawInsert(
+        "INSERT INTO $table(username, password) VALUES('$username', '$password');");
+  }
+
+  // method to retrieve all users
+  Future<List<User>> getUsers() async {
+    final db = await database;
+    print("opened db");
+    final List<Map<String, dynamic>> maps = await db.query(User.tableName);
+    return List.generate(maps.length, (i) {
+      return User(
+        id: maps[i]['id'],
+        username: maps[i]['username'],
+        password: maps[i]['password'],
+      );
+    });
   }
 
   Future<bool> validBlackCardId(String black_card_id) async {
