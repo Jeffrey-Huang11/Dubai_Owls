@@ -1,9 +1,9 @@
 Team Dubai Owls -- Jeffrey Huang, Arib Chowdhury, Anya Zorin, Carlos Hernandez
 SoftDev
-P5 -- 
-2021-05-23
+P5: This is the End
+2021-06-14
 
-
+================================================================================
 jeffreyH -- 2021-05-23 21:28
 Created design document
 ================================================================================
@@ -16,3 +16,20 @@ Dubai Owls -- 2021-05-27 17:23
 Resolved issues with design doc
 Closed issues from DD reviews by other PMs
 ================================================================================
+Dubai Owls -- 2021-05-31 20:40
+Added sample running flutter app that consists of one page 
+Changed dependencies and figured out issues with null safety
+Working on transitioning the prebuilt DB to our project and accessing it
+================================================================================
+Dubai Owls -- 2021-06-01 19:58
+Created simple sign-up and welcome page
+Successfully constructed the cards db
+================================================================================
+aribC -- 2021-06-05 17:29
+Finished creating and testing functions for cards db
+================================================================================
+jeffreyH -- 2021-06-06 19:42
+Updated ReadMe tasks
+================================================================================
+aribC -- 2021-06-07 19:58
+Database operations and intitialization currently fully works.

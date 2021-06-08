@@ -51,6 +51,15 @@ SET default_with_oids = false;
 -- Name: black_cards; Type: TABLE; Schema: public; Owner: pyx
 --
 
+CREATE TABLE users(
+    id INTEGER PRIMARY KEY, 
+    username TEXT, 
+    password TEXT
+);
+
+ALTER TABLE users OWNER TO pyx;
+
+
 CREATE TABLE black_cards (
     id integer NOT NULL,
     draw integer NOT NULL,

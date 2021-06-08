@@ -72,6 +72,7 @@ class DatabaseCAHC {
   // method to insert user
   Future<void> insertUser(User user) async {
     final db = await database;
+
     Map<String, dynamic> map = user.toMap();
     String table = User.tableName;
     String username = map['username'];
@@ -83,7 +84,6 @@ class DatabaseCAHC {
   // method to retrieve all users
   Future<List<User>> getUsers() async {
     final db = await database;
-    print("opened db");
     final List<Map<String, dynamic>> maps = await db.query(User.tableName);
     return List.generate(maps.length, (i) {
       return User(
@@ -118,7 +118,7 @@ class DatabaseCAHC {
     return false;
   }
 
-//select
+  //select
   Future<BlackCards> getBlackCard() async {
     final db = await database;
     List<Map<String, dynamic>> maps =
