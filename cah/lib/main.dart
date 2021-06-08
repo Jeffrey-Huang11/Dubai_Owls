@@ -8,7 +8,7 @@ void main() async {
   bruh.getAllCardPacks();
   print(await bruh.getBlackCard());
   print(await bruh.getWhiteCards(5));
-  var fido = User(id: 0, username: 'Fido', password: 'oknujm');
+  var fido = User(username: 'Fido', password: 'drug');
   await bruh.insertUser(fido);
   print(await bruh.getUsers());
 }

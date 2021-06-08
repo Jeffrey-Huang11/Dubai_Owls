@@ -48,10 +48,10 @@ class DatabaseCAHC {
       //write
       await File(path).writeAsBytes(bytes, flush: true);
 
-      return await openDatabase(path, readOnly: true);
+      return await openDatabase(path);
     } else {
       //print("opening existing db");
-      return await openDatabase(path, readOnly: true);
+      return await openDatabase(path);
     }
   }
 
@@ -72,17 +72,19 @@ class DatabaseCAHC {
   // method to insert user
   Future<void> insertUser(User user) async {
     final db = await database;
-    await db.insert(
-      'user',
-      user.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+
+    Map<String, dynamic> map = user.toMap();
+    String table = User.tableName;
+    String username = map['username'];
+    String password = map['password'];
+    await db.rawInsert(
+        "INSERT INTO $table(username, password) VALUES('$username', '$password');");
   }
 
   // method to retrieve all users
   Future<List<User>> getUsers() async {
     final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query('user');
+    final List<Map<String, dynamic>> maps = await db.query(User.tableName);
     return List.generate(maps.length, (i) {
       return User(
         id: maps[i]['id'],
