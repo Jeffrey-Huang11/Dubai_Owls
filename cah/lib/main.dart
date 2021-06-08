@@ -58,7 +58,12 @@ class Homepage extends StatelessWidget {
                     : Colors.blue;
               }),
             ),
-            onPressed: ,
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Lobby()),
+              );
+            },
             child: Text('Game Lobby'),
           ),
       ),
@@ -74,11 +79,49 @@ class Lobby extends StatelessWidget {
         title: Text('Game Lobby'),
       ),
       body: Center(
-        child: Text('Welcome!', style: Theme.of(context).textTheme.headline2),
+        child: TextButton(
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.resolveWith(
+                  (Set<MaterialState> states) {
+                return states.contains(MaterialState.disabled)
+                    ? null
+                    : Colors.white;
+            }),
+            backgroundColor: MaterialStateProperty.resolveWith(
+                (Set<MaterialState> states) {
+              return states.contains(MaterialState.disabled)
+                  ? null
+                  : Colors.blue;
+            }),
+
+          ),
+          onPressed: (){
+            Navigator.push(
+              context,
+                MaterialPageRoute(builder: (context) => GameScreen()),
+              );
+            },
+            child: Text('Game screen'),
+        ),
       ),
     );
   }
 }
+
+class GameScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Game Screen'),
+      ),
+      body: Center(
+        child: Text('Lol game', style: Theme.of(context).textTheme.headline2),
+      ),
+    );
+  }
+}
+
 class SignUpForm extends StatefulWidget {
   @override
   _SignUpFormState createState() => _SignUpFormState();
