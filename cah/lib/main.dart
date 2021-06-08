@@ -1,31 +1,219 @@
-import 'package:cah/db/DbCAHC.dart';
 import 'package:flutter/material.dart';
-import 'package:cah/models/user.dart';
 
-void main() async {
-  runApp(MyApp());
-  DatabaseCAHC bruh = DatabaseCAHC.instance;
-  bruh.getAllCardPacks();
-  print(await bruh.getBlackCard());
-  print(await bruh.getWhiteCards(5));
-  var fido = User(username: 'Fido', password: 'drug');
-  await bruh.insertUser(fido);
-  print(await bruh.getUsers());
-}
+void main() => runApp(SignUp());
 
-class MyApp extends StatelessWidget {
+// shows the routes of the website and which function to invoke
+class SignUp extends StatelessWidget {
   @override
-  DatabaseCAHC bruh = DatabaseCAHC.instance;
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Welcome to Flutter',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Welcome to Flutter'),
+      routes: {
+        '/': (context) => SignInScreen(),
+        '/homepage': (context) => Homepage(),
+        '/lobby': (context) => Lobby(),
+      },
+    );
+  }
+}
+
+// builds sign-up box
+class SignInScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      body: Center(
+        child: SizedBox(
+          width: 500,
+          child: Card(
+            child: SignUpForm(),
+          ),
         ),
-        body: Center(
-          child: Text(bruh.getUsers().toString()),
-        ),
+      ),
+    );
+  }
+}
+
+// welcome screen after successful sign-in
+class Homepage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('User Homepage'),
+      ),
+      body: Center(
+        child: TextButton(
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.resolveWith(
+                  (Set<MaterialState> states) {
+                return states.contains(MaterialState.disabled)
+                    ? null
+                    : Colors.white;
+              }),
+              backgroundColor: MaterialStateProperty.resolveWith(
+                  (Set<MaterialState> states) {
+                return states.contains(MaterialState.disabled)
+                    ? null
+                    : Colors.blue;
+              }),
+            ),
+            onPressed: ,
+            child: Text('Game Lobby'),
+          ),
+      ),
+    );
+  }
+}
+
+class Lobby extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Game Lobby'),
+      ),
+      body: Center(
+        child: Text('Welcome!', style: Theme.of(context).textTheme.headline2),
+      ),
+    );
+  }
+}
+class SignUpForm extends StatefulWidget {
+  @override
+  _SignUpFormState createState() => _SignUpFormState();
+}
+
+// controls user sign-up
+class _SignUpFormState extends State<SignUpForm> {
+  final _usernameTextController = TextEditingController();
+  final _password0TextController = TextEditingController();
+
+  double _formProgress = 0;
+
+  void _showHomepage() {
+    Navigator.of(context).pushNamed('/homepage');
+  }
+
+  void _updateFormProgress() {
+    var progress = 0.0;
+    final controllers = [
+      _usernameTextController,
+      _password0TextController,
+    ];
+
+    for (final controller in controllers) {
+      if (controller.value.text.isNotEmpty) {
+        progress += 1 / controllers.length;
+      }
+    }
+
+    setState(() {
+      _formProgress = progress;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      onChanged: _updateFormProgress,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AnimatedProgressIndicator(value: _formProgress),
+          Text('Sign up', style: Theme.of(context).textTheme.headline4),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: TextFormField(
+              controller: _usernameTextController,
+              decoration: InputDecoration(hintText: 'Username'),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: TextFormField(
+              controller: _password0TextController,
+              decoration: InputDecoration(hintText: 'Password'),
+            ),
+          ),
+          TextButton(
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.resolveWith(
+                  (Set<MaterialState> states) {
+                return states.contains(MaterialState.disabled)
+                    ? null
+                    : Colors.white;
+              }),
+              backgroundColor: MaterialStateProperty.resolveWith(
+                  (Set<MaterialState> states) {
+                return states.contains(MaterialState.disabled)
+                    ? null
+                    : Colors.blue;
+              }),
+            ),
+            onPressed: _formProgress == 1 ? _showHomepage : null,
+            child: Text('Sign up'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// (2) animates the sign-up bar
+class AnimatedProgressIndicator extends StatefulWidget {
+  final double value;
+
+  AnimatedProgressIndicator({
+    required this.value,
+  });
+
+  @override
+  State<StatefulWidget> createState() {
+    return _AnimatedProgressIndicatorState();
+  }
+}
+
+class _AnimatedProgressIndicatorState extends State<AnimatedProgressIndicator>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Color?> _colorAnimation;
+  late Animation<double> _curveAnimation;
+
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+        duration: Duration(milliseconds: 1200), vsync: this);
+
+    final colorTween = TweenSequence([
+      TweenSequenceItem(
+        tween: ColorTween(begin: Colors.red, end: Colors.orange),
+        weight: 1,
+      ),
+      TweenSequenceItem(
+        tween: ColorTween(begin: Colors.orange, end: Colors.green),
+        weight: 1,
+      ),
+    ]);
+
+    _colorAnimation = _controller.drive(colorTween);
+    _curveAnimation = _controller.drive(CurveTween(curve: Curves.easeIn));
+  }
+
+  @override
+  void didUpdateWidget(oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _controller.animateTo(widget.value);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, child) => LinearProgressIndicator(
+        value: _curveAnimation.value,
+        valueColor: _colorAnimation,
+        backgroundColor: _colorAnimation.value?.withOpacity(0.4),
       ),
     );
   }
