@@ -35,7 +35,7 @@ class SignInScreen extends StatelessWidget {
   }
 }
 
-// welcome screen after successful sign-in
+// Homepage after successful sign-in
 class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class Homepage extends StatelessWidget {
               MaterialPageRoute(builder: (context) => Lobby()),
             );
           },
-          child: Text('Game Lobby'),
+          child: Text(' Create A Game! '),
         ),
       ),
     );
