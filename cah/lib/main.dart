@@ -11,6 +11,7 @@ class SignUp extends StatelessWidget {
         '/': (context) => SignInScreen(),
         '/homepage': (context) => Homepage(),
         '/lobby': (context) => Lobby(),
+        '/gamepage': (context) => GameScreen(),
       },
     );
   }
@@ -44,33 +45,34 @@ class Homepage extends StatelessWidget {
       ),
       body: Center(
         child: TextButton(
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.resolveWith(
-                  (Set<MaterialState> states) {
-                return states.contains(MaterialState.disabled)
-                    ? null
-                    : Colors.white;
-              }),
-              backgroundColor: MaterialStateProperty.resolveWith(
-                  (Set<MaterialState> states) {
-                return states.contains(MaterialState.disabled)
-                    ? null
-                    : Colors.blue;
-              }),
-            ),
-            onPressed: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Lobby()),
-              );
-            },
-            child: Text('Game Lobby'),
+          style: ButtonStyle(
+            foregroundColor:
+                MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+              return states.contains(MaterialState.disabled)
+                  ? null
+                  : Colors.white;
+            }),
+            backgroundColor:
+                MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+              return states.contains(MaterialState.disabled)
+                  ? null
+                  : Colors.blue;
+            }),
           ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Lobby()),
+            );
+          },
+          child: Text('Game Lobby'),
+        ),
       ),
     );
   }
 }
 
+// lobby screen for game creation
 class Lobby extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -80,34 +82,34 @@ class Lobby extends StatelessWidget {
       ),
       body: Center(
         child: TextButton(
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.resolveWith(
-                  (Set<MaterialState> states) {
-                return states.contains(MaterialState.disabled)
-                    ? null
-                    : Colors.white;
+          style: ButtonStyle(
+            foregroundColor:
+                MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+              return states.contains(MaterialState.disabled)
+                  ? null
+                  : Colors.white;
             }),
-            backgroundColor: MaterialStateProperty.resolveWith(
-                (Set<MaterialState> states) {
+            backgroundColor:
+                MaterialStateProperty.resolveWith((Set<MaterialState> states) {
               return states.contains(MaterialState.disabled)
                   ? null
                   : Colors.blue;
             }),
-
           ),
-          onPressed: (){
+          onPressed: () {
             Navigator.push(
               context,
-                MaterialPageRoute(builder: (context) => GameScreen()),
-              );
-            },
-            child: Text('Game screen'),
+              MaterialPageRoute(builder: (context) => GameScreen()),
+            );
+          },
+          child: Text('Game screen'),
         ),
       ),
     );
   }
 }
 
+// game screen with players
 class GameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
