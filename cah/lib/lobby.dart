@@ -7,6 +7,7 @@ var playerSize = "4";
 var scoreSize = "2";
 var spectatorSize = "None";
 
+// stateful widget to ensure changes can be made
 class Lobby extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
