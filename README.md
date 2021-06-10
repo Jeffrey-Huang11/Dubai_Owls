@@ -20,4 +20,5 @@ Our website allows users to play Cards Against Humanities. Users can create thei
 1. Clone the repository
 2. `cd cah`
 3. `flutter run --release`
-4. Peruse app 
+4. Enter device you wish to serve the app on (Chrome -- 1)
+5. Peruse app 
