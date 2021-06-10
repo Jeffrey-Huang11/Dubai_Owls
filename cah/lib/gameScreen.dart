@@ -27,7 +27,7 @@ class _GameScreenState extends State<GameScreen> {
               context, MaterialPageRoute(builder: (context) => Homepage()));
         },
         label: const Text('End Game'),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.red,
       ),
     );
   }
