@@ -2,17 +2,18 @@
 ## Roster & Roles:
 * Jeffrey (Project Manager): 
   * User Database Management
+  * Widgets Builder
 * Arib Chowdhury: 
   * Card Database Management
-  * Database Function Constructor
+  * Database Functions Constructor
 * Anya Zorin: 
   * Frontend Developer
   * Web and App Tester
 * Carlos "Karl" Hernandez: 
   * Pages Constructer
-  * Degugger
+  * Debugger
 ## Description:
-Our website allows users to play Cards Against Humanities with other users. Users can create their own games with different card packs and can allow others to join with a password. 
+Our website allows users to play Cards Against Humanities. Users can create their own games with different card packs and can allow others to join with a password. 
 
 ## Launch Codes:
 0. Make sure to have flutter installed and running the latest version (run `$flutter doctor` to update and check if its Version 2.2.0)
