@@ -104,24 +104,27 @@ class DatabaseCAHC {
     });
   }
 
-  Future<bool> validBlackCardId(String blackCardId) async {
+  Future<bool> validBlackCardId(String black_card_id) async {
     final db = await database;
     List<Map<String, dynamic>> maps = await db.query(
         CardSetBlackCards.tableName,
         where: "black_card_id = ?",
-        whereArgs: [blackCardId]);
+        whereArgs: [black_card_id]);
+    if ('____'.allMatches(maps[0]['text']).length > 1) {
+      return false;
+    }
     for (dynamic row in maps) {
       if (cardPacks.contains(row['card_set_id'])) return true;
     }
     return false;
   }
 
-  Future<bool> validWhiteCardId(String whiteCardId) async {
+  Future<bool> validWhiteCardId(String white_card_id) async {
     final db = await database;
     List<Map<String, dynamic>> maps = await db.query(
         CardSetWhiteCards.tableName,
         where: "white_card_id = ?",
-        whereArgs: [whiteCardId]);
+        whereArgs: [white_card_id]);
     for (dynamic row in maps) {
       if (cardPacks.contains(row['card_set_id'])) return true;
     }
