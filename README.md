@@ -12,6 +12,9 @@
 * Carlos "Karl" Hernandez: 
   * Pages Constructer
   * Debugger
+* Amit Prasad: 
+  * Everything + Debugger
+  * Tft player extraordanair 
 ## Description:
 Our website allows users to play Cards Against Humanities. Users can create their own games with different card packs and can allow others to join with a password. 
 
@@ -20,5 +23,5 @@ Our website allows users to play Cards Against Humanities. Users can create thei
 1. Clone the repository
 2. `cd cah`
 3. `flutter run --release`
-4. Enter device you wish to serve the app on (Chrome -- 1)
+4. Enter any mobile phone emulator device you wish to serve the app on (it will take a llooooonnggg time)
 5. Peruse app 

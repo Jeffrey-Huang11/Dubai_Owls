@@ -64,6 +64,15 @@ class DatabaseCAHC {
     });
   }
 
+  Future<List<dynamic>> getAllCardPacksNames() async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps =
+        await db.query(CardSets.tableName, columns: ['name']);
+    return List.generate(maps.length, (i) {
+      return maps[i]['name'];
+    });
+  }
+
   void updateCardPacks() {
     cardPacks = [];
     // Add code later

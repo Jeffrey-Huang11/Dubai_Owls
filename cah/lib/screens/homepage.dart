@@ -3,17 +3,22 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 
 import 'package:cah/main.dart';
-import 'package:cah/signIn.dart';
-import 'package:cah/lobby.dart';
+import 'package:cah/screens/signIn.dart';
+import 'package:cah/screens/lobby.dart';
 
 // Homepage after successful sign-in
 class Homepage extends StatelessWidget {
+  final String username;
+  Homepage({
+    required this.username,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Welcome to Card\'s Against Humanity',
+          'Welcome ' + username + ' to Card\'s Against Humanity',
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
@@ -42,7 +47,8 @@ class Homepage extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Lobby()),
+              MaterialPageRoute(
+                  builder: (context) => Lobby(username: username)),
             );
           },
           child: Text(' Create A Game! '),
