@@ -6,13 +6,14 @@
 * Arib Chowdhury: 
   * Card Database Management
   * Database Functions Constructor
+  * Debugger
 * Anya Zorin: 
   * Frontend Developer
   * Web and App Tester
 * Carlos "Karl" Hernandez: 
   * Pages Constructer
-  * Debugger
-* Amit Prasad: 
+  * Creates Bugs
+* Amit Prasad (foreigner): 
   * Everything + Debugger
   * Tft player extraordanair 
 ## Description:
