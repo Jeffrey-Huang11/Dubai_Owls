@@ -1,3 +1,4 @@
+import 'package:cah/screens/homepage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cah/main.dart';
@@ -25,6 +26,8 @@ class SignInForm extends StatefulWidget {
   _SignInFormState createState() => _SignInFormState();
 }
 
+var username;
+
 // widget of Sign-In box
 class _SignInFormState extends State<SignInForm> {
   final _usernameTextController = TextEditingController();
@@ -32,12 +35,9 @@ class _SignInFormState extends State<SignInForm> {
 
   double _formProgress = 0;
 
-  void _showHomepage() {
-    Navigator.of(context).pushNamed('/homepage');
-  }
-
   void _updateFormProgress() {
     var progress = 0.0;
+    username = _usernameTextController.text;
     final controllers = [
       _usernameTextController,
       _password0TextController,
@@ -92,10 +92,17 @@ class _SignInFormState extends State<SignInForm> {
                     : Colors.blue;
               }),
             ),
-            onPressed: _formProgress == 1
-                ? (_showHomepage)
-                : null, // if formProgress is complete, context for homepage is invoked, else nothing happens
-            child: Text('Sign up'),
+            onPressed: () {
+              if (_formProgress == 1)
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Homepage(username: username)),
+                );
+              else
+                null;
+            },
+            child: Text('Sign In'),
           ),
         ],
       ),
