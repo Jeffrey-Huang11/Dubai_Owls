@@ -55,7 +55,7 @@ class DatabaseCAHC {
     }
   }
 
-  void getAllCardPacks() async {
+  void getAllCardPacksID() async {
     final db = await database;
     final List<Map<String, dynamic>> maps =
         await db.query(CardSets.tableName, columns: ['id']);
@@ -64,7 +64,17 @@ class DatabaseCAHC {
     });
   }
 
+  Future<List<dynamic>> getAllCardPacksNames() async {
+    final db = await database;
+    final List<Map<String, dynamic>> maps =
+        await db.query(CardSets.tableName, columns: ['name']);
+    return List.generate(maps.length, (i) {
+      return maps[i]['name'];
+    });
+  }
+
   void updateCardPacks() {
+    // very important
     cardPacks = [];
     // Add code later
   }
@@ -94,24 +104,24 @@ class DatabaseCAHC {
     });
   }
 
-  Future<bool> validBlackCardId(String black_card_id) async {
+  Future<bool> validBlackCardId(String blackCardId) async {
     final db = await database;
     List<Map<String, dynamic>> maps = await db.query(
         CardSetBlackCards.tableName,
         where: "black_card_id = ?",
-        whereArgs: [black_card_id]);
+        whereArgs: [blackCardId]);
     for (dynamic row in maps) {
       if (cardPacks.contains(row['card_set_id'])) return true;
     }
     return false;
   }
 
-  Future<bool> validWhiteCardId(String white_card_id) async {
+  Future<bool> validWhiteCardId(String whiteCardId) async {
     final db = await database;
     List<Map<String, dynamic>> maps = await db.query(
         CardSetWhiteCards.tableName,
         where: "white_card_id = ?",
-        whereArgs: [white_card_id]);
+        whereArgs: [whiteCardId]);
     for (dynamic row in maps) {
       if (cardPacks.contains(row['card_set_id'])) return true;
     }
