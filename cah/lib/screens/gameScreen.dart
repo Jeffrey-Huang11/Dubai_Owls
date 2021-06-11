@@ -1,3 +1,4 @@
+import 'package:cah/screens/signIn.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cah/screens/lobby.dart';
@@ -96,7 +97,7 @@ class GameScreenState extends State<GameScreen> {
                       child: new Container(
                         width: 180.0,
                         child: Text(
-                          'Hello',
+                          '____ makes Stuyvesant the best place on Earth! ',
                           style: TextStyle(color: Colors.white, fontSize: 17),
                         ),
                         padding: const EdgeInsets.all(10),
@@ -117,22 +118,32 @@ class GameScreenState extends State<GameScreen> {
                   child: Card(
                     shadowColor: Colors.black,
                     elevation: 5,
-                    child: InkWell(
-                      onTap: () {
-                        print('fuck');
-                      },
-                      child: new Container(
-                        width: 170.0,
-                        child: Text(
-                          'Hello',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        padding: const EdgeInsets.all(10),
+                    child: new Container(
+                      width: 170.0,
+                      child: Text(
+                        'It isn\'t ',
+                        style: TextStyle(fontSize: 17),
                       ),
+                      padding: const EdgeInsets.all(10),
                     ),
                   ),
                 ),
                 //Card 1
+                Container(
+                    height: 120,
+                    child: Card(
+                      shadowColor: Colors.black,
+                      elevation: 5,
+                      child: new Container(
+                        width: 170.0,
+                        child: Text(
+                          'The great and wonderful people',
+                          style: TextStyle(fontSize: 17),
+                        ),
+                        padding: const EdgeInsets.all(10),
+                      ),
+                    )),
+                //Card 2
                 Container(
                   height: 120,
                   width: 170,
@@ -151,7 +162,7 @@ class GameScreenState extends State<GameScreen> {
                       child: Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          'Hello',
+                          ' Ferries sandwiches ',
                           style: TextStyle(
                             fontSize: 17,
                             color: Colors.black,
@@ -161,21 +172,6 @@ class GameScreenState extends State<GameScreen> {
                     ),
                   ),
                 ),
-                //Card 2
-                Container(
-                    height: 120,
-                    child: Card(
-                      shadowColor: Colors.black,
-                      elevation: 5,
-                      child: new Container(
-                        width: 170.0,
-                        child: Text(
-                          'Hello',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        padding: const EdgeInsets.all(10),
-                      ),
-                    )),
                 //Card 3
                 Container(
                     height: 120,
@@ -185,7 +181,7 @@ class GameScreenState extends State<GameScreen> {
                       child: new Container(
                         width: 170.0,
                         child: Text(
-                          'Hello',
+                          'Lmao, Lmfao, Lol',
                           style: TextStyle(fontSize: 17),
                         ),
                         padding: const EdgeInsets.all(10),
@@ -200,7 +196,7 @@ class GameScreenState extends State<GameScreen> {
                     child: new Container(
                       width: 170.0,
                       child: Text(
-                        'Hello',
+                        'The infinite floors',
                         style: TextStyle(fontSize: 17),
                       ),
                       padding: const EdgeInsets.all(10),
@@ -216,7 +212,7 @@ class GameScreenState extends State<GameScreen> {
                     child: new Container(
                       width: 170.0,
                       child: Text(
-                        'Hello',
+                        'The Hudson Staircase',
                         style: TextStyle(fontSize: 17),
                       ),
                       padding: const EdgeInsets.all(10),
@@ -232,7 +228,7 @@ class GameScreenState extends State<GameScreen> {
                     child: new Container(
                       width: 170.0,
                       child: Text(
-                        'Hello',
+                        'The wonderful escalators',
                         style: TextStyle(fontSize: 17),
                       ),
                       padding: const EdgeInsets.all(10),
@@ -248,7 +244,7 @@ class GameScreenState extends State<GameScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => Homepage(username: username)),
+                      builder: (context) => Homepage(username: "")),
                 );
               },
               label: const Text('End Game'),
@@ -293,7 +289,7 @@ class Confirmation extends StatelessWidget {
                 child: new Container(
                   width: 250.0,
                   child: Text(
-                    'Hello',
+                    'Ferries sandwiches',
                     style: TextStyle(fontSize: 20),
                   ),
                   padding: const EdgeInsets.all(20),
