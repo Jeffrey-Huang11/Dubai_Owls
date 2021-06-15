@@ -31,7 +31,6 @@ var username;
 // widget of Sign-In box
 class _SignInFormState extends State<SignInForm> {
   final _usernameTextController = TextEditingController();
-  final _password0TextController = TextEditingController();
 
   double _formProgress = 0;
 
@@ -40,7 +39,6 @@ class _SignInFormState extends State<SignInForm> {
     username = _usernameTextController.text;
     final controllers = [
       _usernameTextController,
-      _password0TextController,
     ];
 
     for (final controller in controllers) {
@@ -68,13 +66,6 @@ class _SignInFormState extends State<SignInForm> {
             child: TextFormField(
               controller: _usernameTextController,
               decoration: InputDecoration(hintText: 'Username'),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: TextFormField(
-              controller: _password0TextController,
-              decoration: InputDecoration(hintText: 'Password'),
             ),
           ),
           TextButton(
