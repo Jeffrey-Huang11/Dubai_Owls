@@ -11,8 +11,6 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseCAHC {
-  DatabaseCAHC._();
-
   static const databaseName = 'data.db';
   Random random = new Random();
   //Constructor
@@ -104,12 +102,12 @@ class DatabaseCAHC {
     });
   }
 
-  Future<bool> validBlackCardId(String black_card_id) async {
+  Future<bool> validBlackCardId(String blackCardId) async {
     final db = await database;
     List<Map<String, dynamic>> maps = await db.query(
         CardSetBlackCards.tableName,
         where: "black_card_id = ?",
-        whereArgs: [black_card_id]);
+        whereArgs: [blackCardId]);
     if ('____'.allMatches(maps[0]['text']).length > 1) {
       return false;
     }
@@ -119,12 +117,12 @@ class DatabaseCAHC {
     return false;
   }
 
-  Future<bool> validWhiteCardId(String white_card_id) async {
+  Future<bool> validWhiteCardId(String whiteCardId) async {
     final db = await database;
     List<Map<String, dynamic>> maps = await db.query(
         CardSetWhiteCards.tableName,
         where: "white_card_id = ?",
-        whereArgs: [white_card_id]);
+        whereArgs: [whiteCardId]);
     for (dynamic row in maps) {
       if (cardPacks.contains(row['card_set_id'])) return true;
     }

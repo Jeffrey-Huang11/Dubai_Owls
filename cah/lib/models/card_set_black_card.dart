@@ -1,16 +1,16 @@
 class CardSetBlackCards {
-  int card_set_id;
-  int black_card_id;
+  int cardSetId;
+  int blackCardId;
 
   static String tableName = "'public.card_set_black_card'";
-  CardSetBlackCards({this.card_set_id = 0, this.black_card_id = 0});
+  CardSetBlackCards({this.cardSetId = 0, this.blackCardId = 0});
 
   Map<String, dynamic> toMap() {
-    return {'card_set_id': card_set_id, 'black_card_id': black_card_id};
+    return {'card_set_id': cardSetId, 'black_card_id': blackCardId};
   }
 
   @override
   String toString() {
-    return 'CardSetBlackCards{card_set_id: $card_set_id, black_card_id: $black_card_id}';
+    return 'CardSetBlackCards{card_set_id: $cardSetId, black_card_id: $blackCardId}';
   }
 }

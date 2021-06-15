@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:cah/db/DbCAHC.dart';
-import 'package:cah/main.dart';
 import 'package:cah/screens/gameScreen.dart';
 
 List<String> cach = [
@@ -22,7 +19,7 @@ var spectatorSize = "None";
 
 // stateful widget to ensure changes can be made
 class Lobby extends StatefulWidget {
-  var username;
+  final username;
   Lobby({this.username});
 
   @override
@@ -72,7 +69,7 @@ class _LobbyState extends State<Lobby> {
                   scoreSize = newValue!;
                 });
               },
-              items: <String>['2', '4', '6', '8', '10']
+              items: <String>['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
@@ -98,7 +95,7 @@ class _LobbyState extends State<Lobby> {
                   playerSize = newValue!;
                 });
               },
-              items: <String>['4', '6', '8', '10', '12', '14', '16', '18', '20']
+              items: <String>['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,

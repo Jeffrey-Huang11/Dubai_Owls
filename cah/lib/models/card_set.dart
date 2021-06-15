@@ -1,7 +1,7 @@
 class CardSets {
   int id;
   int active;
-  int base_deck;
+  int baseDeck;
   String description;
   String name;
   int weight;
@@ -10,7 +10,7 @@ class CardSets {
   CardSets(
       {this.id = 0,
       this.active = 0,
-      this.base_deck = 0,
+      this.baseDeck = 0,
       this.description = "word",
       this.name = "word",
       this.weight = 0});
@@ -19,7 +19,7 @@ class CardSets {
     return {
       'id': id,
       'active': active,
-      'base_deck': base_deck,
+      'base_deck': baseDeck,
       'description': description,
       'name': name,
       'weight': weight
@@ -28,6 +28,6 @@ class CardSets {
 
   @override
   String toString() {
-    return 'CardSets{id: $id, active: $active, base_deck: $base_deck, description: $description, name: $name, weight: $weight}';
+    return 'CardSets{id: $id, active: $active, base_deck: $baseDeck, description: $description, name: $name, weight: $weight}';
   }
 }

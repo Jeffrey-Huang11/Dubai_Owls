@@ -1,8 +1,6 @@
 import 'package:cah/screens/homepage.dart';
 import 'package:flutter/material.dart';
 
-import 'package:cah/main.dart';
-
 // builds sign-in box
 class SignInScreen extends StatelessWidget {
   @override
@@ -90,10 +88,8 @@ class _SignInFormState extends State<SignInForm> {
                   MaterialPageRoute(
                       builder: (context) => Homepage(username: username)),
                 );
-              else
-                null;
             },
-            child: Text('Sign In'),
+            child: Text('Pick a username'),
           ),
         ],
       ),

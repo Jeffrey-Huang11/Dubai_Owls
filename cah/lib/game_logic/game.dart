@@ -2,8 +2,8 @@ import 'package:cah/db/DbCAHC.dart';
 import 'package:cah/models/white_cards.dart';
 
 class Game {
-  late Map<String, int> _game_scoreboard;
-  late Map<String, Future<List<WhiteCards>>> _players_hands;
+  late Map<String, int> _gameScoreboard;
+  late Map<String, Future<List<WhiteCards>>> _playersHands;
   DatabaseCAHC database = DatabaseCAHC.instance;
 
   Game() {
@@ -11,28 +11,28 @@ class Game {
   }
 
   Future init(List<String> usernames) async {
-    _game_scoreboard = Map<String, int>.fromIterable(usernames,
+    _gameScoreboard = Map<String, int>.fromIterable(usernames,
         key: (user) => user, value: (_) => 0);
-    _players_hands = Map<String, Future<List<WhiteCards>>>.fromIterable(
+    _playersHands = Map<String, Future<List<WhiteCards>>>.fromIterable(
         usernames,
         key: (user) => user,
         value: (_) => database.getWhiteCards(10));
   }
 
-  void update_user_score(String username) {
-    _game_scoreboard.update(username, (value) => ++value);
+  void updateUserScore(String username) {
+    _gameScoreboard.update(username, (value) => ++value);
   }
 
-  Future<List<WhiteCards>> get_user_cards(String username) async {
-    return await _players_hands[username]!;
+  Future<List<WhiteCards>> getUserCards(String username) async {
+    return await _playersHands[username]!;
   }
 
-  Map get game_scoreboard => _game_scoreboard;
-  Map get player_hands => _players_hands;
+  Map get gameScoreboard => _gameScoreboard;
+  Map get playerHands => _playersHands;
 
   @override
   String toString() {
-    return "scoreboard: " + _game_scoreboard.toString() + "\nPlayers Hands" + _players_hands.toString();
+    return "scoreboard: " + _gameScoreboard.toString() + "\nPlayers Hands" + _playersHands.toString();
   }
 
   /* Future<WhiteCard> pick_random_card(String username,) */

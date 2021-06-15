@@ -1,9 +1,5 @@
-import 'package:cah/screens/signIn.dart';
 import 'package:flutter/material.dart';
-
-import 'package:cah/screens/lobby.dart';
 import 'package:cah/screens/homepage.dart';
-import 'package:cah/main.dart';
 
 // stateful widget to ensure changes can be made
 // ignore: must_be_immutable
@@ -43,7 +39,7 @@ class GameScreenState extends State<GameScreen> {
                 playerScore = playerScore;
               });
             },
-            items: <String>['0', '2', '4', '6', '8', '10']
+            items: <String>['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
                 .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
