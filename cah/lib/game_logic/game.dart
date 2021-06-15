@@ -6,13 +6,13 @@ class Game {
   late Map<String, Future<List<WhiteCards>>> _players_hands;
   DatabaseCAHC database = DatabaseCAHC.instance;
 
-  Game(List<String> usernames) {
-    _game_scoreboard = Map<String, int>.fromIterable(usernames,
-        key: (user) => user, value: (_) => 0);
+  Game() {
+    database.getAllCardPacksID();
   }
 
   Future init(List<String> usernames) async {
-    database.getAllCardPacksID();
+    _game_scoreboard = Map<String, int>.fromIterable(usernames,
+        key: (user) => user, value: (_) => 0);
     _players_hands = Map<String, Future<List<WhiteCards>>>.fromIterable(
         usernames,
         key: (user) => user,
