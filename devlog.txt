@@ -41,3 +41,5 @@ jeffreyH -- 2021-06-10 18:46
 Reorganized widgets in main.dart to multiple files
 Added several functions on each page
 ================================================================================
+Dubai Owls -- 2021-06-15 15:19
+Game Logic fully functional
