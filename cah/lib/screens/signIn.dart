@@ -58,7 +58,7 @@ class _SignInFormState extends State<SignInForm> {
         mainAxisSize: MainAxisSize.min,
         children: [
           AnimatedProgressIndicator(value: _formProgress),
-          Text('Sign In', style: Theme.of(context).textTheme.headline4),
+          Text('Pick a username', style: Theme.of(context).textTheme.headline4),
           Padding(
             padding: EdgeInsets.all(10.0),
             child: TextFormField(
@@ -89,7 +89,7 @@ class _SignInFormState extends State<SignInForm> {
                       builder: (context) => Homepage(username: username)),
                 );
             },
-            child: Text('Pick a username'),
+            child: Text('Submit'),
           ),
         ],
       ),

@@ -39,7 +39,7 @@ class GameScreenState extends State<GameScreen> {
                 playerScore = playerScore;
               });
             },
-            items: <String>['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+            items: <String>['0', '2', '4', '6', '8', '10']
                 .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
