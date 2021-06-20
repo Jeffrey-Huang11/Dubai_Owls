@@ -1,8 +1,10 @@
 import 'package:cah/db/DbCAHC.dart';
 import 'package:cah/models/white_cards.dart';
+import 'dart:math';
 
 class Game {
   int judge = 0; // index of judge
+  var rng = new Random();
   late List<String> users;
   late Map<String, int> _gameScoreboard;
   late Map<String, Future<List<WhiteCards>>> _playersHands;
@@ -89,7 +91,10 @@ class Game {
     return whitesOnly;
   }
 
-  WhiteCards pickAnswer(int cardChoice) {
+  WhiteCards pickAnswer({int cardChoice = -1}) {
+    if (cardChoice == -1) {
+      cardChoice = rng.nextInt(selectedCards.length);
+    }
     updateUserScore(users[cardChoice]);
     String user = checkScore();
     if (user != "") {
