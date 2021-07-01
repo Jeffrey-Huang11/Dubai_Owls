@@ -32,9 +32,6 @@ void main() async {
   print("Pick Answer (Jeff)");
   print(test.pickAnswer(cardChoice: 2));
   print(await test.currentQuestionCard());
-
-  /* print("second round"); */
-
 }
 
 // shows the routes of the website and which function to invoke
