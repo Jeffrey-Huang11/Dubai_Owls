@@ -1,8 +1,13 @@
 import 'package:cah/db/DbCAHC.dart';
+import 'package:cah/models/black_cards.dart';
 import 'package:cah/models/white_cards.dart';
+import 'dart:math';
 
+// name screen -> home page (join lobby or create lobby or spectate) [external service - server side] -> create lobby (game instance) -> init game instance -> start the game
 class Game {
-  int judge = 0; // index of judge
+  // later on have a game code that corresponds to this Game instance
+  Random random = new Random();
+  late int czar; // index of judge
   late List<String> users;
   late Map<String, int> _gameScoreboard;
   late Map<String, Future<List<WhiteCards>>> _playersHands;
@@ -11,10 +16,13 @@ class Game {
   late bool gameDone = false; //If game_done, cut to end screen
   late String gameWinner = ""; //Winner of game if game_winner != ""
   late int scoreLimit = 0;
+  late Future<BlackCards> currentQuestion;
   DatabaseCAHC database = DatabaseCAHC.instance;
 
   Future init(List<String> usernames) async {
     database.getAllCardPacksID();
+    czar = random.nextInt(usernames.length);
+    currentQuestion = database.getBlackCard();
     _gameScoreboard = Map<String, int>.fromIterable(usernames,
         key: (user) => user, value: (_) => 0);
     _playersHands = Map<String, Future<List<WhiteCards>>>.fromIterable(
@@ -46,17 +54,19 @@ class Game {
 
   @override
   String toString() {
-    return "scoreboard: " +
-        _gameScoreboard.toString() +
-        "\nPlayers Hands" +
-        _playersHands.toString();
+    return "scoreboard: " + _gameScoreboard.toString();
   }
 
-  void nextJudge() {
-    judge = (judge + 1) % users.length;
+  Future<BlackCards> currentQuestionCard() async {
+    return currentQuestion;
   }
 
-  String checkScore() {
+  void nextCzar() async {
+    czar = (czar + 1) % users.length;
+    currentQuestion = database.getBlackCard();
+  }
+
+  String checkWin() {
     for (int i = 0; i < users.length; i++) {
       String user = users[i];
       if (_gameScoreboard[user] == scoreLimit) {
@@ -69,10 +79,15 @@ class Game {
   // Assumes frontend gives a index of card picked and the username of player
   // Assumes 1 player, many bots
   Future<WhiteCards> pickCard(String username, int cardChoice) async {
-    WhiteCards playerChoseWhite =
-        await pickCardHelper(username, cardChoice: cardChoice);
-    for (int i = 1; i < users.length; i++) {
-      await pickCardHelper(users[i]);
+    WhiteCards playerChoseWhite = WhiteCards();
+    for (int i = 0; i < users.length; i++) {
+      if (i == czar) continue;
+      if (i == 0) {
+        playerChoseWhite =
+            await pickCardHelper(username, cardChoice: cardChoice);
+      } else {
+        await pickCardHelper(users[i]);
+      }
     }
     return playerChoseWhite;
   }
@@ -89,14 +104,21 @@ class Game {
     return whitesOnly;
   }
 
-  WhiteCards pickAnswer(int cardChoice) {
+  WhiteCards pickAnswer({int cardChoice: -1}) {
+    if (cardChoice == -1) {
+      cardChoice = random.nextInt(users.length);
+    }
+    while (cardChoice == czar) {
+      print("You can't pick the czar's card - smh");
+      cardChoice = random.nextInt(users.length);
+    }
     updateUserScore(users[cardChoice]);
-    String user = checkScore();
+    String user = checkWin();
     if (user != "") {
       gameDone = true;
       gameWinner = user;
     }
-    nextJudge();
+    nextCzar();
     return selectedCards[cardChoice]!;
   }
 }

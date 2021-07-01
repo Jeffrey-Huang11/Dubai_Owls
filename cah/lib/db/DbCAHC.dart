@@ -108,7 +108,9 @@ class DatabaseCAHC {
         CardSetBlackCards.tableName,
         where: "black_card_id = ?",
         whereArgs: [blackCardId]);
-    if ('____'.allMatches(maps[0]['text']).length > 1) {
+    List<Map<String, dynamic>> blackCard = await db.query(BlackCards.tableName,
+        where: "id = ?", whereArgs: [blackCardId], limit: 1);
+    if ('____'.allMatches(blackCard[0]['text']).length > 1) {
       return false;
     }
     for (dynamic row in maps) {
